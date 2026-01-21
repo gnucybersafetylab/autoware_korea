@@ -197,13 +197,42 @@ var customScripts = {
             // 드롭다운 메뉴 초기화
             $('.dropdown-toggle').dropdown();
             
+            // 모바일에서 드롭다운 메뉴 토글
+            $(document).on('click', '.dropdown-toggle', function(e) {
+                if ($(window).width() < 768) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var $dropdown = $(this).parent('.dropdown');
+                    var $menu = $dropdown.find('.dropdown-menu');
+                    
+                    // 다른 드롭다운 닫기
+                    $('.dropdown').not($dropdown).removeClass('open show');
+                    $('.dropdown-menu').not($menu).hide();
+                    
+                    // 현재 드롭다운 토글
+                    $dropdown.toggleClass('open show');
+                    if ($dropdown.hasClass('open')) {
+                        $menu.show();
+                    } else {
+                        $menu.hide();
+                    }
+                }
+            });
+            
             // Bootstrap collapse 초기화 (햄버거 메뉴)
             $('#nav-toggle').on('click', function() {
                 $('#main-nav').collapse('toggle');
             });
             
-            // 모바일에서 메뉴 링크 클릭 시 메뉴 닫기
-            $('#main-nav a').on('click', function() {
+            // 모바일에서 일반 메뉴 링크 클릭 시 메뉴 닫기 (드롭다운이 아닌 경우)
+            $('#main-nav > li:not(.dropdown) > a').on('click', function() {
+                if ($(window).width() < 768) {
+                    $('#main-nav').collapse('hide');
+                }
+            });
+            
+            // 드롭다운 메뉴 내부 링크 클릭 시
+            $('.dropdown-menu a').on('click', function() {
                 if ($(window).width() < 768) {
                     $('#main-nav').collapse('hide');
                 }
