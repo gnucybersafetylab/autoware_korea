@@ -197,6 +197,18 @@ var customScripts = {
             // 드롭다운 메뉴 초기화
             $('.dropdown-toggle').dropdown();
             
+            // Bootstrap collapse 초기화 (햄버거 메뉴)
+            $('#nav-toggle').on('click', function() {
+                $('#main-nav').collapse('toggle');
+            });
+            
+            // 모바일에서 메뉴 링크 클릭 시 메뉴 닫기
+            $('#main-nav a').on('click', function() {
+                if ($(window).width() < 768) {
+                    $('#main-nav').collapse('hide');
+                }
+            });
+            
             // 네비게이션 로드 후 다른 스크립트 초기화
             customScripts.init();
             

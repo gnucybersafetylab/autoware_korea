@@ -279,6 +279,18 @@ a:hover {
 	background: #fff;
 }
 .navbar-toggle {
+	display: none;
+	margin-right: 15px;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	border-radius: 4px;
+	padding: 9px 10px;
+	background-color: transparent;
+}
+
+@media (max-width: 767px) {
+	.navbar-toggle {
+		display: block !important;
+	}
 }
 .hero-text {
 	color: #676e73;
@@ -316,10 +328,61 @@ a:hover {
 /*----Nav ----*/
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
 	border: 0px solid transparent;
-	display: flex;
-	align-items: center;
-	flex: 1;
-	justify-content: flex-end;
+}
+
+@media (min-width: 768px) {
+	.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+		display: flex;
+		align-items: center;
+		flex: 1;
+		justify-content: flex-end;
+	}
+}
+
+@media (max-width: 767px) {
+	.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+		display: none;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		padding: 15px 0;
+	}
+	
+	.navbar-inverse .navbar-collapse.in,
+	.navbar-inverse .navbar-collapse.show {
+		display: block !important;
+	}
+	
+	.navbar-nav {
+		float: none !important;
+		display: block !important;
+		text-align: left;
+	}
+	
+	.navbar-nav > li {
+		display: block;
+		float: none;
+	}
+	
+	.navbar-nav > li > a {
+		padding: 10px 15px !important;
+		line-height: 1.5 !important;
+		height: auto !important;
+		display: block;
+	}
+	
+	.navbar-toggle {
+		display: block !important;
+		margin-right: 15px;
+		border: 1px solid rgba(255, 255, 255, 0.3);
+	}
+	
+	.navbar-toggle .icon-bar {
+		background-color: #fff;
+		display: block;
+		width: 22px;
+		height: 2px;
+		border-radius: 1px;
+		margin: 4px 0;
+	}
 }
 .header .navbar-brand {
 	float: left;
@@ -1184,21 +1247,39 @@ footer {
 }
 
 @media (max-width: 767px) {
-#mainNav {
-	background: none repeat scroll 0% 0% rgba(5, 5, 5, 0.94);
-	transition: all 0.3s linear 0s;
-}
-}
-
-@media (max-width:760px) {
-.header .navbar-nav > li > a {
-	padding: 7px 10px;
-	font-size: 14px;
-}
-.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-	border-color: #A8A8A8;
-}
-;
+	#mainNav {
+		background: none repeat scroll 0% 0% rgba(5, 5, 5, 0.94);
+		transition: all 0.3s linear 0s;
+	}
+	
+	.header .navbar-nav > li > a {
+		padding: 10px 15px !important;
+		font-size: 14px;
+	}
+	
+	.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+		border-color: rgba(255, 255, 255, 0.1);
+	}
+	
+	.dropdown-menu {
+		position: static !important;
+		float: none;
+		width: 100%;
+		margin-top: 0;
+		background-color: rgba(0, 0, 0, 0.3);
+		border: none;
+		box-shadow: none;
+	}
+	
+	.dropdown-menu > li > a {
+		padding: 10px 30px;
+		color: rgba(255, 255, 255, 0.8);
+	}
+	
+	.dropdown-menu > li > a:hover {
+		background-color: rgba(255, 255, 255, 0.1);
+		color: #fff;
+	}
 }
 
 @media (max-width: 480px) {
