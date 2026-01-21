@@ -245,4 +245,47 @@ $(document).ready(function () {
 	setTimeout(function() {
 		$('.features-left, .features-right, .design, .serviceBox, .owl-wrapper-outer, #portfolio').css('opacity','0');
 	}, 100);
+	
+	// 중앙 이미지를 중간 박스와 정렬
+	function alignCenterImageWithMiddleBox() {
+		var $leftMiddleBox = $('.features-left .feature:nth-child(2)');
+		var $rightMiddleBox = $('.features-right .feature:nth-child(2)');
+		var $centerImage = $('.features .phone-image');
+		var $centerContainer = $('.features .col-md-4:nth-child(2)');
+		
+		if ($leftMiddleBox.length && $rightMiddleBox.length && $centerImage.length && $centerContainer.length) {
+			// 중간 박스들의 위치와 높이 계산
+			var leftMiddleTop = $leftMiddleBox.position().top;
+			var rightMiddleTop = $rightMiddleBox.position().top;
+			var leftMiddleHeight = $leftMiddleBox.outerHeight();
+			var rightMiddleHeight = $rightMiddleBox.outerHeight();
+			
+			// 평균 위치와 높이 계산
+			var averageTop = (leftMiddleTop + rightMiddleTop) / 2;
+			var averageHeight = (leftMiddleHeight + rightMiddleHeight) / 2;
+			
+			// 중간 박스의 중앙 위치
+			var middleBoxCenter = averageTop + (averageHeight / 2);
+			
+			// 중앙 이미지 컨테이너 내에서의 위치 계산
+			var centerImageHeight = $centerImage.outerHeight();
+			var targetPosition = middleBoxCenter - (centerImageHeight / 2);
+			
+			// 중앙 이미지 위치 조정 (컨테이너 기준)
+			$centerImage.css({
+				'position': 'relative',
+				'top': targetPosition + 'px',
+				'transform': 'none'
+			});
+		}
+	}
+	
+	// 페이지 로드 및 리사이즈 시 정렬
+	$(document).ready(function() {
+		setTimeout(alignCenterImageWithMiddleBox, 300);
+	});
+	
+	$(window).on('resize', function() {
+		setTimeout(alignCenterImageWithMiddleBox, 100);
+	});
 });
