@@ -1,0 +1,13 @@
+title: Autoware Korea
+description: "Autoware Korea Website"
+
+# Jekyll 기본 설정
+source: .
+destination: ./_site
+plugins:
+  - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
