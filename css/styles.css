@@ -375,7 +375,7 @@ a:hover {
 	background: #fff;
 }
 .navbar-toggle {
-	display: none;
+	display: none !important;
 	margin-right: 15px;
 	border: 1px solid rgba(255, 255, 255, 0.3);
 	border-radius: 4px;
@@ -383,6 +383,14 @@ a:hover {
 	background-color: transparent;
 }
 
+/* PC에서는 햄버거 메뉴 숨김 */
+@media (min-width: 768px) {
+	.navbar-toggle {
+		display: none !important;
+	}
+}
+
+/* 모바일에서만 햄버거 메뉴 표시 */
 @media (max-width: 767px) {
 	.navbar-toggle {
 		display: block !important;
@@ -2021,7 +2029,7 @@ nav#filter li {
 	justify-content: center;
 	min-height: 100vh;
 	padding: 120px 20px 40px;
-	padding-top: 15vh;
+	padding-top: 18vh;
 }
 
 @media (max-width: 767px) {
@@ -2236,6 +2244,9 @@ nav#filter li {
 	color: #222;
 	margin-bottom: 15px;
 	letter-spacing: 1px;
+	text-align: center !important;
+	width: 100%;
+	display: block;
 }
 
 #aboutUs .heading p {
@@ -2247,6 +2258,7 @@ nav#filter li {
 	margin-right: auto;
 	text-align: center !important;
 	display: block;
+	width: 100%;
 }
 
 #aboutUs .row.feature {
